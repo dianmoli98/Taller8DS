@@ -15,7 +15,7 @@ import java.util.Date;
  */
 public class Employee
 {   //remuneracion mensual unificada
-    private final double rmu = 386.0;
+    private final float rmu = 386.0F;
     //salario del employee
     private float salary;
     private String currency;
@@ -44,23 +44,23 @@ public class Employee
         // Si la moneda es USD, se considera todo el salario,
         // caso contrario se resta 5% por cambio de moneda
         if(currency == "USD"){salario = salary; }
-        else{salario = (float) (salary * 0.95);}
+        else{salario =  (salary * 0.95F);}
         switch (employeeType)         
         {
             case Worker:
                 //Si el mes es impar entonces le entrega 
                 //el dÃ©cimo junto con su salario
-                return (float) (month%2==0?salario:salario + rmu/12*2);
+                return  (month%2==0?salario:salario + rmu/12*2);
             case Supervisor:
                 float valueS = salario + (bonusPercentage * 0.35F);
                 //Si el mes es impar entonces le entrega 
                 //el dÃ©cimo junto con su salario y un bono
-                return (float) (month%2==0?valueS:valueS + rmu/12*2);
+                return (month%2==0?valueS:valueS + rmu/12*2);
             case Manager:
                 float valueM = salario + (bonusPercentage * 0.7F);
                 //Si el mes es impar entonces le entrega 
                 //el dÃ©cimo junto con su salario y un bono
-                return (float) (month%2==0?valueM:valueM + rmu/12*2);
+                return  (month%2==0?valueM:valueM + rmu/12*2);
         }
         return 0.0F;
     }
@@ -70,14 +70,14 @@ public class Employee
         // Si la moneda es USD, se considera todo el salario,
         // caso contrario se resta 5% por cambio de moneda
         if(currency == "USD"){salario = salary; }
-        else{salario = (float) (salary * 0.95);}
+        else{salario = (salary * 0.95F);}
         switch (employeeType) {
             case Worker:
-                return (float) rmu;
+                return  rmu;
             case Supervisor:
-                return (float) (salario + rmu * 0.5F);
+                return  (salario + rmu * 0.5F);
             case Manager:
-                return (float) (salario + rmu * 1.0F);
+                return (salario + rmu * 1.0F);
         }
         return 0.0F;
     }
